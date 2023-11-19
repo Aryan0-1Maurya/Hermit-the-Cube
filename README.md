@@ -1,10 +1,11 @@
+.
 # Hermit the Cube
 
 Embark on a puzzling adventure with Hermit the Cube, a challenging puzzle game that defies gravity! 🧊🕹️
 
 ## Play the Game
 
-[Play Now](https://your-username.github.io/hermit-the-cube/) 🕹️
+[Play Now]( https://aryan0-1maurya.github.io/Hermit-the-Cube/) 🕹️
 
 ## About the Game
 
