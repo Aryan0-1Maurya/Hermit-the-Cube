@@ -1,0 +1,917 @@
+<!-- 
+
+      ************************************************************
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=7" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="author" content="Aryan Maurya" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="favicon.png" />
+        <!-- <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+        <meta
+          name="description"
+          content="This is online hermit the cube game build for your imporove thing skill in this domain by aryan maurya enjoy your game"
+        />
+        <meta
+          name="keywords"
+          content="hermit,hermit game,hrmit,hermiting game,hermit games,hermiting the game,hermiting cube,hermit cube,hermit cubing,hermit cube game,game of hermit game, online t rex dinogame,online games hub, fun free, online , dino, human, computer, other game,color poly green shok,online dino game by aryan , aryan sir, aryan sir game"
+        />
+        <title>Hermit the Cube</title>
+        <meta charset="UTF-8">  
+        <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            alert("Versoin v1.1:\nWhile Creating Levels it will be automatically saved and added to one of the three Levelslots. You can find them in the Levelselection under 'Own Levels'\nNext Version:\nWill include a kind of 'online' Levels.Be curious!");
+            //All Fields as Arrays of 1's and 0's
+            var field1 =     [0,0,0,0,0,
+                            0,1,1,1,0,
+                            0,1,0,1,0,
+                            0,1,1,1,0,
+                            0,0,0,0,0];
+                            
+            var field2 =    [0,0,0,0,0,0,
+                            0,0,0,0,1,0,
+                            0,1,1,0,1,0,
+                            0,1,1,1,1,0,
+                            0,0,1,1,1,0,
+                            0,0,0,0,0,0,];
+                            
+            var field3 =     [0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,1,0,1,1,0,0,
+                            0,0,0,0,1,0,1,1,1,0,
+                            0,0,1,1,1,1,1,1,1,0,
+                            0,0,1,0,1,0,0,1,0,0,
+                            0,0,1,0,1,0,0,1,0,0,
+                            0,0,1,1,1,1,1,1,0,0,
+                            0,0,1,1,1,1,1,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0];
+                            
+            var field4 =     [0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,1,1,1,0,0,0,
+                            0,0,0,0,1,1,1,1,0,0,
+                            0,0,1,1,1,1,1,1,1,0,
+                            0,1,1,1,1,1,1,1,1,0,
+                            0,0,1,1,1,1,1,1,0,0,
+                            0,0,0,0,1,1,0,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0];
+                            
+            var field5 =    [0,0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,
+                            0,1,1,0,1,1,1,1,1,0,0,
+                            0,1,1,1,1,1,1,1,1,1,0,
+                            0,0,1,0,0,1,0,0,1,1,0,
+                            0,0,1,0,0,1,0,0,1,1,0,
+                            0,0,1,1,1,1,1,1,1,1,0,
+                            0,0,0,0,0,1,1,1,1,1,0,
+                            0,0,0,0,1,1,1,0,1,0,0,
+                            0,0,0,0,1,1,1,1,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,];
+                            
+            var field6 =    [0,0,0,0,0,0,0,0,0,0,0,0,0,
+                            0,1,0,0,0,0,0,0,0,0,0,0,0,
+                            0,1,0,0,0,0,0,0,0,0,0,0,0,
+                            0,1,0,1,1,1,1,0,0,0,0,0,0,
+                            0,1,1,1,0,0,1,1,0,0,0,0,0,
+                            0,1,1,1,0,0,1,1,1,1,0,0,0,
+                            0,1,1,1,0,0,0,1,1,1,1,0,0,
+                            0,1,1,1,0,0,0,0,1,1,1,1,0,
+                            0,1,1,1,0,0,0,1,1,1,1,1,0,
+                            0,1,1,1,1,1,1,1,1,1,1,0,0,
+                            0,0,1,1,1,1,1,1,0,1,0,0,0,
+                            0,0,0,0,1,1,1,1,1,1,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,0];    
+                            
+            var field7 =    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,1,1,1,0,0,0,0,
+                            0,0,0,0,0,1,1,1,1,1,1,1,0,0,
+                            0,0,1,1,1,1,1,1,1,1,1,1,0,0,
+                            0,0,0,1,0,0,1,1,0,1,1,1,0,0,
+                            0,0,1,1,0,0,1,1,0,0,0,0,0,0,
+                            0,0,1,1,1,0,1,1,0,0,1,1,0,0,
+                            0,0,1,1,1,0,1,1,1,1,1,1,0,0,
+                            0,0,1,1,1,0,1,0,1,0,1,1,0,0,
+                            0,0,1,1,1,0,1,0,1,0,1,0,0,0,
+                            0,0,0,0,1,1,1,1,1,1,1,1,0,0,
+                            0,0,0,0,0,1,1,1,1,1,1,1,0,0,
+                            0,0,0,0,1,1,1,1,1,0,0,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                            
+            var field8 =     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,
+                            0,0,0,0,1,1,0,0,0,0,1,1,1,1,0,0,
+                            0,1,1,1,1,1,1,0,1,0,1,1,1,1,1,0,
+                            0,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,
+                            0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,
+                            0,1,1,1,1,1,0,0,1,1,1,1,1,1,0,0,
+                            0,0,1,0,1,1,1,1,1,0,0,0,0,0,0,0,
+                            0,0,1,1,1,1,1,1,1,0,0,0,1,1,0,0,
+                            0,0,0,0,1,1,1,1,0,1,1,1,1,1,0,0,
+                            0,0,0,0,0,1,1,1,1,1,0,0,1,0,0,0,
+                            0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,
+                            0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,
+                            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+            var player_Position = 0;
+            var direction = 0;
+            var anim = false;
+            var speed = 50;
+            var moves = 0;
+            var wall_borders = "";    
+            var set = false;
+            var lvl = 0;
+            var listener = false;
+            var e1,e2,e3;
+            var listener_e1 = false,listener_e2 = false,listener_e3 = false;
+            //Function to start the game and get the field that should be displayed
+            function startGame(pField,pLvl){
+                listener = true;
+                _listenerA = function(){
+                    getKeyboard(event,field);
+                };
+                document.body.addEventListener("keydown",_listenerA);
+                document.body.addEventListener("touchstart",getStartPos);
+                _listenerB = function(){
+                    getEndPos(event,field);
+                };
+                document.body.addEventListener("touchend",_listenerB);
+                if($.isArray(pField)){
+                    field = pField;
+                }
+                lvl = pLvl;
+                field_path = [...field];
+                field_width= Math.sqrt(field.length);
+                wall_width = 100/field_width;
+                anim = false;
+                moves = 0;
+                $(".moves").text("Moves: "+moves);
+                createField(field);
+                setPlayer(field);
+                document.body.addEventListener("touchstart",getStartPos);
+                
+                $(".container").css({"display":"block"});
+                $(".lvl_Selection,.win_alert,.overlay").css({"display":"none"});
+            }
+            //Create the field out of the array
+            function createField(){
+                for(let i = 0; i < field.length;i++){
+                    if(field[i] == 0){
+                        posX = (i % field_width) * wall_width;
+                        posY = (i - (i % field_width))/field_width  * wall_width;
+                        if(field[i - 1] == 1){
+                        wall_borders += " border_left";
+                    }
+                    if(field[i + 1] == 1){
+                        wall_borders += " border_right";
+                    }
+                    if(field[i - field_width] == 1){
+                        wall_borders += " border_top";
+                    }
+                    if(field[i + field_width] == 1){
+                        wall_borders += " border_bottom";
+                    }
+                        $(".container").append("<div class='wall "+wall_borders+"' style='left:"+posX+"%;top:"+posY+"%'></div>");
+                    }  
+                    wall_borders = "";
+                }
+                $(".wall").css({"width":wall_width+"%","height":wall_width+"%"});
+            }
+            //Place the Player on the first possible field
+            function setPlayer(){
+                for(let i = 0; i < field.length && set == false;i++){
+                    if(field[i] == 1){
+                        posX = (i % field_width) * wall_width;
+                        posY = (i - (i % field_width))/field_width  * wall_width;
+                        $(".player").css({"left":posX+"%","top":posY+"%"});
+                        $(".player").css({"width":wall_width+"%","height":wall_width+"%"});
+                        set = true;
+                        player_Position = i;
+                        update();
+                    }
+                }
+                set = false;
+            }
+            //Get Input from the Keyboard to move the player
+            function getKeyboard(event,){
+                if(anim == false){
+                    if(event.keyCode == 87){
+                        if(field[player_Position - field_width] == 1){
+                            direction = -90;
+                            movePlayer(field);
+                        }
+                    }
+                    else if(event.keyCode == 65){
+                        if(field[player_Position - 1] == 1){
+                            direction = -180;
+                            movePlayer(field);
+                        }
+                    }
+                    else if(event.keyCode == 83){
+                        if(field[player_Position + field_width] == 1){
+                            direction = 90;
+                            movePlayer(field);
+                        }
+                    }
+                    else if(event.keyCode == 68){
+                        if(field[player_Position + 1] == 1){
+                            direction = 0;
+                            movePlayer(field);
+                        }
+                        
+                    }
+                }
+            }
+            //Move the player into a direction while the next field is free
+            function movePlayer(){
+                if(direction == -90){
+                    interval = setInterval(function(){
+                    if(field[player_Position - field_width] == 1){
+                        anim = true;
+                        player_Position -= field_width;
+                        update();
+                    }
+                    else {
+                        clearInterval(interval);
+                        anim = false;
+                        check_Completed();
+                    }
+                    },speed);
+                }
+                else if(direction == -180){
+                interval = setInterval(function(){
+                    if(field[player_Position - 1] == 1){
+                        anim = true;
+                        player_Position -= 1;
+                        update();
+                    }
+                    else {
+                        clearInterval(interval);
+                        anim = false;
+                        check_Completed();
+                    }
+                    },speed);
+                }
+                else if(direction == 90){
+                interval = setInterval(function(){
+                    if(field[player_Position + field_width] == 1){
+                        anim = true;
+                        player_Position += field_width;
+                        update();
+                    }
+                    else {
+                        clearInterval(interval);
+                        anim = false;
+                        check_Completed();
+                    }
+                    },speed);
+                }
+                else if(direction == 0){
+                interval = setInterval(function(){
+                    if(field[player_Position + 1] == 1){
+                        anim = true;
+                        player_Position += 1;
+                        update();
+                    }
+                    else {
+                        clearInterval(interval);
+                        anim = false;
+                        check_Completed();
+                    }
+                    },speed);
+                }
+                moves++;
+                $(".moves").text("Moves: "+moves);
+            }
+            //Swipe on Moblie Devices
+            function getStartPos(event){
+                eTouchStartX = event.touches[0].clientX;
+                eTouchStartY = event.touches[0].clientY;
+            }
+            function getEndPos(event,){
+                eTouchEndX = event.changedTouches[0].clientX;
+                eTouchEndY = event.changedTouches[0].clientY;
+                getSwipeDirection(field);
+            }
+            //Look in which direction the swipe moved
+            function getSwipeDirection(){
+                if(anim == false){
+                    if(Math.abs(eTouchStartX - eTouchEndX) > Math.abs(eTouchStartY - eTouchEndY)){ //Horizontal Swipe
+                        if(eTouchStartX > eTouchEndX){ //Swipe Left
+                            if(field[player_Position - 1] == 1){
+                                direction = -180;
+                                movePlayer(field);
+                            }
+                        }
+                        else{ //Swipe Right
+                            if(field[player_Position + 1] == 1){
+                                direction = 0;
+                                movePlayer(field);
+                            }
+                        }
+                    }
+                    else{ //Vertical Swipe
+                        if(eTouchStartY > eTouchEndY){ //Swipe Up
+                            if(field[player_Position - field_width] == 1){
+                                direction = -90;
+                                movePlayer(field);
+                            }
+                        }
+                        else{ //Swipe Down
+                            if(field[player_Position + field_width] == 1){
+                                direction = 90;
+                                movePlayer(field);
+                            }
+                        }
+                    }
+                }
+            }
+            //Updates the Player's Position
+            function update(){
+                posY = (player_Position - (player_Position % field_width))/field_width  * wall_width;
+                posX = (player_Position % field_width) * wall_width;
+                $(".player").animate({"left":posX+"%","top":posY+"%"},speed, "linear");
+                $(".container").append("<div class='path' style='left:"+posX+"%;top:"+posY+"%'></div>");
+                field_path.splice(player_Position,1,0);
+                $(".path").css({"width":wall_width+"%","height":wall_width+"%"});
+            }
+            //Check if the whole path is claimed
+            function check_Completed(){
+                if(field_path.every(function(pos){
+                    return pos == 0;
+                })){
+                    winner();
+                }
+            }
+            //Show Win alert if the whole path is completed
+            function winner(){
+                if(listener == true){
+                    document.body.removeEventListener("keydown",_listenerA);
+                    document.body.removeEventListener("touchstart",getStartPos);
+                    document.body.removeEventListener("touchend",_listenerB);
+                    listener = false;
+                }
+                $(".overlay,.win_alert").css({"display":"block"});
+                $(".win_txt").text("You absolved Level "+lvl + " in " +moves+ " Moves!");
+            }
+            //Button to play the next Level
+            function next_lvl(){
+                lvl++;
+                if(lvl <= 8){
+                    nxt = eval("field"+lvl);
+                    $(".table").children().remove();
+                    $(".table,.path,.wall").remove();
+                    startGame(nxt,lvl);
+                }
+                else{
+                    altMsg();
+                    //alert("Thanks for playing, maybe there will be more level soon. If you want more, you can create your own level in the editor!");
+                }
+            }
+            function altMsg(){
+                Swal.fire({
+    icon: 'info',
+    title: 'Thanks for playing, maybe there will be more level soon. If you want more, you can create your own level in the editor!',
+  })
+            }
+            //Open the editor screen
+            function openEditor(){
+                $(".editor").css({"display":"block"});
+                $(".start_screen").css({"display":"none"});
+                $(".table").children().remove();
+                $(".table,.table_info,.btn_getTable").remove();
+            }
+            //Creates the table in the Editor, filled with checkboxes, to create your own Levels
+            function createTable(){
+                checkbox_num = 0;
+                $(".table").children().remove();
+                $(".table,.table_info,.btn_getTable").remove();
+                table_width = parseInt($(".inp_tableWidth").val());
+                if(table_width >= 4){
+                    $(".inp_tableWidth").css({"border-color":"white"});
+                    $(".editor").append("<div class='table' cellspacing='0' cellpadding='0'></div><p class='table_info'>Click on the Fields to create a path!</p><div class='btn_getTable' onclick='getTable()'>Play</div>");
+                    for(let i = 0; i < table_width; i++){
+                        $(".table").append("<tr class='row"+i+"'></tr>"); 
+                        for(let j = 0; j < table_width; j++){
+                            $(".row"+i).append("<td><input type='checkbox' id='checkbox"+checkbox_num+"'/><label for='checkbox"+checkbox_num+"'><span>&nbsp;</span></label></td>");
+                            if( checkbox_num <= table_width || checkbox_num % table_width == 0 || (checkbox_num <= table_width*table_width && checkbox_num >= table_width*table_width - table_width) || checkbox_num % table_width == table_width - 1){
+                                $("#checkbox"+checkbox_num).attr("disabled","disabled");
+                            }
+                            checkbox_num++;                 
+                        }
+                    }
+                        $("input[type='checkbox'] + label span").css({"width":$(".table").innerWidth() / table_width + "px","height":$(".table").innerWidth() / table_width + "px"});
+                    if($(".table").position().top + $(".table").innerHeight() < window.innerHeight){
+                        $(".table").css({"top":"60%","transform":"translate(-50%,-50%)"});
+                    }
+                    else{
+                        $(".table").css({"top":"120px","transform":"translate(-50%,0%)"});
+                    }
+                }
+                else{
+                    $(".inp_tableWidth").css({"border-color":"#c64343"});
+                    $(".inp_tableWidth").val("");
+                    $(".inp_tableWidth").attr("placeholder","Input has to be at least 4!");
+                } 
+            }
+            //Create an Array out of the Checkboxes Value
+            function getTable(){
+                editor_Array = [];
+                lvlslotfound = false;
+                for(let i = 0; i < table_width*table_width;i++){
+                    if($("#checkbox"+i).prop("checked") == true){
+                        editor_Array.push(1);    
+                    }
+                    else{
+                        editor_Array.push(0);
+                    }
+                }
+                for(let i = 0;i <= 3 && lvlslotfound == false;i++){
+                    switch(i){
+                        case 1:
+                            if(listener_e1 == false){
+                                lvlslotfound = true;
+                                listener_e1 = true;
+                                e1 = editor_Array;
+                                classE1 = document.getElementsByClassName("e1")[0];
+                                classE1.innerHTML = "Level A";
+                                classE1.addEventListener("click", function(){
+                                    startGame(e1,"A");
+                                })
+                            }
+                        break;
+                        case 2:
+                            if(listener_e2 == false){
+                                lvlslotfound = true;
+                                listener_e2 = true;
+                                e2 = editor_Array;
+                                classE2 = document.getElementsByClassName("e2")[0];
+                                classE2.innerHTML = "Level B";
+                                classE2.addEventListener("click", function(){
+                                    startGame(e2,"B");
+                                })
+                            }
+                        break;
+                        case 3:
+                            if(listener_e3 == false){
+                                lvlslotfound = true;
+                                listener_e3 = true;
+                                e3 = editor_Array;
+                                classE3 = document.getElementsByClassName("e3")[0];
+                                classE3.innerHTML = "Level C";
+                                classE3.addEventListener("click", function(){
+                                    startGame(e3,"C");
+                                })
+                            }
+                        break;
+                    }    
+                }
+                $(".editor").css({"display":"none"});
+                startGame(editor_Array,'9');
+            }
+            //Button to go back to the Menu
+            function backToMenu(){
+                if(listener == true){
+                    document.body.removeEventListener("keydown",_listenerA);
+                    document.body.removeEventListener("touchstart",getStartPos);
+                    document.body.removeEventListener("touchend",_listenerB);
+                    listener = false;
+                }
+                $(".table").children().remove();
+                $(".table,.path,.wall").remove();
+                $(".editor,.container,.lvl_Selection,.win_alert,.overlay,.help_selection").css({"display":"none"});
+                $(".start_screen").css({"display":"block"});
+            }
+            //opens the Level Selection
+            function open_lvl_Selection(){
+                $(".lvl_Selection").css({"display":"block"})
+                $(".start_screen").css({"display":"none"}) 
+            }
+            //opens the help Selection
+            function open_help_Selection(){
+                $(".help_selection").css({"display":"block"})
+                $(".start_screen").css({"display":"none"}) 
+            }
+        </script>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+                color:white;
+                font-family: 'VT323', monospace;
+            }
+            body,html{
+                width:100%;
+                height:100%;
+                margin:0;
+            }
+            body{
+                background: linear-gradient(to bottom, #202d35 70%, #333f48);
+            }
+            .overlay{
+                display:none;
+                position:fixed;
+                width:100%;
+                height:100%;
+                background-color:black;
+                opacity:0.3;
+                z-index:10;
+            }
+            .Game_Container{
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                min-width:100px;
+                max-width:600px;
+                min-height:340px;
+                max-height:1250px;
+            }
+            @media screen and (min-width:600px){
+                .Game_Container{
+                    left:calc(50% - 300px);
+                }
+            }
+            .container{
+                display:none;
+                position:absolute;
+                top:50%;
+                left:50%;
+                width:60vw;
+                max-width:300px;
+                height:60vw;
+                max-height:300px;
+                border:3px solid #4e515b;
+                transform:translate(-50%,-50%);
+            }
+            .container::before{
+                content:"";
+                position:absolute;
+                top:-3px;
+                left:-3px;
+                width:100%;
+                height:3px;
+                border-left:3px solid #202d35;
+                border-right:3px solid #202d35;
+            }
+            .container::after{
+                content:"";
+                position:absolute;
+                bottom:-3px;
+                left:-3px;
+                width:100%;
+                height:3px;
+                border-left:3px solid #202d35;
+                border-right:3px solid #202d35;
+            }
+            .wall{
+                position:absolute;
+                background-color:#2d3038;
+            }
+            .border_left{
+                border-left:3px solid #4e515b;
+            }
+            .border_bottom{
+                border-bottom:3px solid #4e515b;
+            }
+            .border_top{
+                border-top:3px solid #4e515b;
+            }
+            .border_right{
+                border-right:3px solid #4e515b;
+            }
+            .path{
+                position:absolute;
+                background-color:#ffec91;
+                z-index:1;
+                opacity:1;                
+                animation:append 0.05s linear;                
+            }
+            @keyframes append{
+                0%{opacity:0;}
+                99%{opacity:0;}
+                100%{opacity:1;}
+            }
+            .player{
+                position:absolute;
+                background-color:#ffe13d;
+                z-index:10;    
+            }
+            .moves{
+                position:absolute;
+                left:0;
+                bottom:-1.2em;
+            }
+            .headline,.win_headline{
+                padding-top:10px;
+                text-align:center;
+                color:black;
+                font-size:3em;
+                text-shadow: 1px 3px #ffe13d;
+                -webkit-text-stroke: 1px #ffe13d;
+            }
+            .btn,.lvl{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                position:absolute;
+                left:50%;
+                width:70%;
+                max-width:300px;
+                min-width:200px;
+                height:5%;
+                max-height:60px;
+                min-height:40px;
+                transform:translate(-50%,-50%);
+                border:6px solid white;
+                cursor:pointer;
+            }
+            .btn::before,.lvl::before,.win_alert::before{
+                content:"";
+                position:absolute;
+                top:-6px;
+                left:-6px;
+                width:100%;
+                height:6px;
+                border-left:6px solid #202d35;
+                border-right:6px solid #202d35;
+            }
+            .btn::after,.lvl::after,.win_alert::after{
+                content:"";
+                position:absolute;
+                bottom:-6px;
+                left:-6px;
+                width:100%;
+                height:6px;
+                border-left:6px solid #202d35;
+                border-right:6px solid #202d35;
+            }
+            .btn_start{
+                top:45%;
+            }
+            .btn_editor{
+                top:60%;
+            }
+            .btn_help{
+                top:75%;
+            }
+            @media screen and (min-height:430px){
+                .btn_start{
+                    top:55%;
+                }
+                .btn_editor{
+                    top:65%;
+                }
+                .btn_help{
+                    top:75%;
+                }
+                .headline{
+                    font-size:5em;
+                }
+            }
+            .lvl{
+                position:relative;
+                margin-top:5%;
+            }
+            .editor{
+                display:none;
+            }
+            .inp_tableWidth{
+                margin-left:15%;
+                margin-top:8%;
+                padding:3px 4px 3px 3px;
+                width:55%;                
+                border:3px solid white;
+                background:none;
+            }
+            .btn_createTable{
+                display:inline-block;
+                border-bottom:3px solid white;
+                width:10%;
+                text-align:center;
+                cursor:pointer;
+            }
+            .table{
+                border-collapse:collapse;
+                position:absolute;
+                top:110px;
+                left:50%;
+                width:60vw;
+                max-width:300px;
+                height:60vw;
+                max-height:300px;
+                border:2px solid white;
+                transform:translateX(-50%);
+            }
+            input[type="checkbox"]{
+                display:none;
+            }
+            input[type="checkbox"] + label span{
+                display:inline-block;
+                background-color:#2d3038;
+                border:1px solid #272a33;
+            }
+            input[type="checkbox"]:checked + label span {
+                background-color:#ffec91;
+            }
+            .table_info{
+                text-align:center;    
+            }
+            .btn_getTable{
+                position:relative;
+                left:50%;
+                border-bottom:3px solid white;
+                width:10%;
+                text-align:center;
+                cursor:pointer;
+                transform:translateX(-50%);
+            }
+            .btn_back{
+                position:absolute;
+                top:3%;
+                right:2%;
+                background-color:white;
+                width:33px;
+                height:3px;
+                cursor:pointer;
+                padding-left:11px;
+            }
+            .btn_back::before{
+                content:"";
+                position:absolute;
+                top:-4px;
+                left:3px;
+                width:3px;
+                height:11px;
+                background-color:white;
+            }
+            .btn_back::after{
+                content:"";
+                position:absolute;
+                top:-7px;
+                left:6px;
+                width:4px;
+                height:11px;
+                border-top:3px solid white;
+                border-bottom:3px solid white;
+            }
+            .lvl_Selection,.help_selection{
+                display:none;
+            }
+            .lvl_container,.help_container{
+                position:absolute;
+                top:30%;
+                left:0;
+                width:100%;
+                height:70%;
+                overflow-y:scroll;
+            }
+            .help_container{
+                padding:0 10% 0 10%;
+                line-height:calc(1em + 5px);
+            }
+            .help_container p {
+                margin-bottom:10px;
+            }
+            .win_alert{
+                display:none;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+                width:80vw;
+                max-width:410px;
+                height:45vw;
+                max-height:220px;
+                background-color:#202d35;
+                border:6px solid white;
+                z-index:11;
+            }
+            .win_headline{
+                padding:0;
+                margin-bottom:10px;
+                font-size:3em;
+            }
+            @media screen and (min-width:340px){
+                .win_headline{
+                    font-size:4em;
+                }
+            }
+            @media screen and (min-width:400px){
+                .win_headline{
+                    font-size:5em;
+                }
+            }
+            .win_txt{
+                text-align:center;
+                color:#afc6d3;
+            }
+            .btn_next_lvl,.btn_back_to_Menu{
+                position:absolute;
+                cursor:pointer;
+                border-bottom:2px solid white;
+                margin:0 6px 6px 6px;
+            }
+            .btn_next_lvl{
+                bottom:0;
+                right:0;
+            }
+            .btn_back_to_Menu{
+                bottom:0;
+                left:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="overlay"></div>
+        <div class="Game_Container">
+            <div class="btn_back" onclick="backToMenu()">Back</div>
+            <div class="container">
+                <div class="player"></div>
+                <div class="moves">Moves: 0</div>
+            </div>
+            <div class="start_screen">
+            <div class="headline">Hermit<br>the Cube</div>
+            <div class="btn btn_start" onclick="open_lvl_Selection()">Start Game</div>
+            <div class="btn btn_editor" onclick="openEditor()">Level Editor</div>
+            <div class="btn btn_help" onclick="open_help_Selection()">Help</div>
+            </div>
+            <div class="lvl_Selection">
+                <div class="headline">Levels</div>
+                <div class="lvl_container">
+                    <div class="lvl" onclick="startGame(field1,'1')" style="margin-top:30px">Level 1</div>
+                    <div class="lvl" onclick="startGame(field2,'2')">Level 2</div>
+                    <div class="lvl" onclick="startGame(field3,'3')">Level 3</div>
+                    <div class="lvl" onclick="startGame(field4,'4')">Level 4</div>
+                    <div class="lvl" onclick="startGame(field5,'5')">Level 5</div>
+                    <div class="lvl" onclick="startGame(field6,'6')">Level 6</div>
+                    <div class="lvl" onclick="startGame(field7,'7')">Level 7</div>
+                    <div class="lvl" onclick="startGame(field8,'8')">Level 8</div>
+                    <div class="headline">Own Levels</div>
+                    <div class="lvl e1">Empty</div>
+                    <div class="lvl e2">Empty</div>
+                    <div class="lvl e3">Empty</div>
+                </div>
+            </div>
+            <div class="editor">
+                <input type="text" placeholder="Input Field Width" class="inp_tableWidth"/>
+                <div class="btn_createTable" onclick="createTable()">Go!</div>
+            </div>
+            <div class="help_selection">
+                <div class="headline">Help</div>
+                <div class="help_container">
+                    <p><b>Aim of the Game</b></p>
+                    <p>The Game is Level based and in every Level you need to fill every path field with the yellow color with moving the cube into the directions!</p>
+                    <p><b>Move on PC</b></p>
+                    <p>To move on the PC with keyboard you use the Buttons W,A,S,D!</p>
+                    <p><b>Move on Moblie Devices</b></p>
+                    <p>To move on Moblie Devices just Swipe into the wanted direction!</p>
+                    <p><b>How to Editor</b></p>
+                    <p>First of all give an input into the Input Field at the top(Notice: if the Number is too big the created table will look weird).</br> Next Click on "Go!". The created table has several Checkboxes(looking like fields) which you can tap on to create the path of your Level! </br>If you are ready with your level click on "Play!" to create it!</p>
+                </div>
+            </div>
+            <div class="win_alert">
+                <div class="win_headline">Well Done</div>
+                <div class="win_txt"></div>
+                <div class="btn_next_lvl" onclick="next_lvl()">Next Level</div>
+                <div class="btn_back_to_Menu" onclick="backToMenu()">Menu</div>
+            </div>
+            <div class="credit" style="position:absolute;bottom:0;left:0;color:#afc6d3">Created by Aryan Maurya</div>
+        </div>
+    </body>
+</html>
+
+<!-- 
+
+      ************************************************************
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+{   By ~Aryan Maurya Mr.perfect https://amsrportfolio.netlify.app  }
+
+           ++++++++++++++    --------    +++++++++++++++++
+
+      ************************************************************
+ -->
